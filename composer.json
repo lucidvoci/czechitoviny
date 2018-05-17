@@ -1,0 +1,43 @@
+{
+    "name": "czechitas/czechitoviny",
+    "description": "-",
+    "type": "craft-plugin",
+    "version": "1.0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "czechitoviny"
+    ],
+    "support": {
+        "docs": "https://github.com/czechitoviny/czechitoviny/blob/master/README.md",
+        "issues": "https://github.com/czechitoviny/czechitoviny/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucie Charvat",
+            "homepage": "https://github.com/lucidvoci"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "czechitas\\czechitoviny\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Czechitoviny",
+        "handle": "czechitoviny",
+        "hasCpSettings": false,
+        "hasCpSection": true,
+        "changelogUrl": "https://raw.githubusercontent.com/czechitoviny/czechitoviny/master/CHANGELOG.md",
+        "components": {
+            "czechitovinyService": "czechitas\\czechitoviny\\services\\CzechitovinyService"
+        },
+        "class": "czechitas\\czechitoviny\\Czechitoviny"
+    }
+}

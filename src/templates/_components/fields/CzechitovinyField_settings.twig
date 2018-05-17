@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Czechitoviny plugin for Craft CMS
+ *
+ * CzechitovinyField Field Settings
+ *
+ * @author    Lucie Charvat
+ * @copyright Copyright (c) 2018 Lucie Charvat
+ * @link      https://github.com/lucidvoci
+ * @package   Czechitoviny
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("czechitas\\czechitoviny\\assetbundles\\czechitoviny\\CzechitovinyAsset") %}
+
+{{ forms.textField({
+    label: 'Some Attribute',
+    instructions: 'Enter some attribute here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: field['someAttribute']})
+}}
