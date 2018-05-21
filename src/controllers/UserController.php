@@ -73,8 +73,6 @@ class UserController extends Controller
                 $models[] = UserModel::createFromRecord($record);
             }
         }
-
-
         return $this->renderTemplate('czechitoviny/index',['users' => $models]);
     }
 
@@ -86,6 +84,7 @@ class UserController extends Controller
         $user = new UserModel();
         $user->email  = $request->post('email');
         $user->gender = $request->post('gender');
+        $user->photoUrl = $request->post('photoUrl');
         $user->phone  = $request->post('phone');
         $user->city   = $request->post('city');
 

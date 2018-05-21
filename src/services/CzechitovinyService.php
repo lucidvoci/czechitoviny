@@ -69,6 +69,7 @@ class CzechitovinyService extends Component
         $record->city = $user->city;
         $record->phone = $user->phone;
         $record->gender = $user->gender;
+        $record->photoUrl = $user->photoUrl;
 
         $record->save(false);
     }

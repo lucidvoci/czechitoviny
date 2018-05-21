@@ -12,6 +12,7 @@ namespace czechitas\czechitoviny;
 
 use czechitas\czechitoviny\services\CzechitovinyService as CzechitovinyServiceService;
 use czechitas\czechitoviny\variables\CzechitovinyVariable;
+use czechitas\czechitoviny\models\UserModel;
 use czechitas\czechitoviny\twigextensions\CzechitovinyTwigExtension;
 use czechitas\czechitoviny\fields\CzechitovinyField as CzechitovinyFieldField;
 
@@ -22,8 +23,9 @@ use craft\events\PluginEvent;
 use craft\web\UrlManager;
 use craft\services\Elements;
 use craft\services\Fields;
+use craft\elements\User;
 use craft\web\twig\variables\CraftVariable;
-use craft\events\RegisterComponentTypesEvent;
+use craft\events\ElementEvent;
 use craft\events\RegisterUrlRulesEvent;
 
 use yii\base\Event;
@@ -108,13 +110,24 @@ class Czechitoviny extends Plugin
             }
         );
 
-        // Register our elements
-//        Event::on(
-//            Elements::class,
-//            Elements::EVENT_REGISTER_ELEMENT_TYPES,
-//            function (RegisterComponentTypesEvent $event) {
-//            }
-//        );
+        // Catch element being saved in craft administration
+        Event::on(
+            Elements::class,
+            Elements::EVENT_AFTER_SAVE_ELEMENT,
+            function (ElementEvent $event) {
+                if ($event->element instanceof User) {
+                    $request = Craft::$app->getRequest();
+
+                    $user = new UserModel();
+                    $user->firstName = $request->getBodyParam('firstName');
+                    $user->lastName = $request->getBodyParam('lastName');
+                    $user->email = $request->getBodyParam('email');
+                    $user->birth = $request->getBodyParam('birth');
+                    $user->role = $request->getBodyParam('role');
+                    Czechitoviny::getInstance()->czechitovinyService->saveUser($user);
+                }
+            }
+        );
 
         // Register our fields
 //        Event::on(
