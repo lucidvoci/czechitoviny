@@ -44,31 +44,31 @@ class UserMoreInfoModel extends Model
     /**
      * @var string|null
      */
-    public $positionStatus = "Studentka SŠ";
+    public $positionStatus = null;
     /**
      * @var string|null
      */
-    public $currentJob = "Student";
+    public $currentJob = null;
     /**
      * @var string|null
      */
-    public $firstContact = "Sociální síť";
+    public $firstContact = null;
     /**
      * @var string|null
      */
-    public $os = "Windows";
+    public $os = null;
     /**
      * @var boolean|null
      */
-    public $photoAgree = false;
+    public $photoAgree = null;
     /**
      * @var boolean|null
      */
-    public $wantsWork = false;
+    public $wantsWork = null;
     /**
      * @var boolean|null
      */
-    public $newsletterSignedup = false;
+    public $newsletterSignedup = null;
 
 
     public static function createFromRecord(UserMoreInfoRecord $record)

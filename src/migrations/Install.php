@@ -155,9 +155,9 @@ class Install extends Migration
                 'currentJob' => $this->string(255)->notNull()->defaultValue(''),
                 'firstContact' => $this->string(255)->notNull()->defaultValue(''),
                 'os' => $this->string(255)->notNull()->defaultValue(''),
-                'photoAgree' => $this->boolean()->notNull()->defaultValue(false),
-                'wantsWork' => $this->boolean()->notNull()->defaultValue(false),
-                'newsletterSignedup' => $this->boolean()->notNull()->defaultValue(false),
+                'photoAgree' => $this->boolean()->defaultValue(null),
+                'wantsWork' => $this->boolean()->defaultValue(null),
+                'newsletterSignedup' => $this->boolean()->defaultValue(null),
             ]
         );
 

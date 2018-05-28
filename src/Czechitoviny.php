@@ -28,6 +28,7 @@ use craft\web\twig\variables\CraftVariable;
 use craft\events\ElementEvent;
 use craft\events\RegisterUrlRulesEvent;
 
+use DateTime;
 use yii\base\Event;
 
 /**
@@ -117,14 +118,15 @@ class Czechitoviny extends Plugin
             function (ElementEvent $event) {
                 if ($event->element instanceof User) {
                     $request = Craft::$app->getRequest();
-
-                    $user = new UserModel();
-                    $user->firstName = $request->getBodyParam('firstName');
-                    $user->lastName = $request->getBodyParam('lastName');
-                    $user->email = $request->getBodyParam('email');
-                    $user->birth = $request->getBodyParam('birth');
-                    $user->role = $request->getBodyParam('role');
-                    Czechitoviny::getInstance()->czechitovinyService->saveUser($user);
+                    if ($request->getBodyParam('action') == 'users/save-user') {
+                        $user = new UserModel();
+                        $user->firstName = $request->getBodyParam('firstName');
+                        $user->lastName = $request->getBodyParam('lastName');
+                        $user->email = $request->getBodyParam('email');
+                        $user->birth = new DateTime($request->getBodyParam('birth'));
+                        $user->role = $request->getBodyParam('role');
+                        Czechitoviny::getInstance()->czechitovinyService->saveUser($user);
+                    }
                 }
             }
         );
