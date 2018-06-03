@@ -122,7 +122,7 @@ class Install extends Migration
                 'dateCreated' => $this->dateTime()->notNull(),
                 'dateUpdated' => $this->dateTime()->notNull(),
                 'uid' => $this->uid(),
-                'calendarEventId' => $this->integer(), // id in the Calendar plugin in Craft
+                'calendarEventId' => $this->string(255)->notNull()->defaultValue(''),
                 'name' => $this->string(255)->notNull()->defaultValue(''),
                 'date' => $this->dateTime()->notNull(),
                 'type' => $this->string(255)->notNull()->defaultValue(''),
@@ -137,9 +137,13 @@ class Install extends Migration
                 'dateCreated' => $this->dateTime()->notNull(),
                 'dateUpdated' => $this->dateTime()->notNull(),
                 'uid' => $this->uid(),
-                'userId' => $this->integer()->notNull(),
-                'courseId' => $this->integer()->notNull(),
+                'userId' => $this->string(255)->notNull()->defaultValue(''),
+                'courseId' => $this->string(255)->notNull()->defaultValue(''),
                 'status' => $this->string(255)->notNull()->defaultValue(''),
+                'firstContact' => $this->string(255)->notNull()->defaultValue(''),
+                'motivation' => $this->string(255)->notNull()->defaultValue(''),
+                'knowledge' => $this->string(255)->notNull()->defaultValue(''),
+                'voucher' => $this->string(255)->notNull()->defaultValue(''),
             ]
         );
 
